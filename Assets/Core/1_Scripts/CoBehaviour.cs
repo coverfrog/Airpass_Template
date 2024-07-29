@@ -7,21 +7,35 @@ namespace CoverFrog
 {
     public abstract class CoBehaviour : MonoBehaviour
     {
-
+        [Header("[ Sequence Option ]")]
+        [SerializeField] private bool playWhenEnable;
+        [SerializeField] private bool activeOffWhenStop;
+        [SerializeField] private bool activeOffWhenComplete;
+        
         private IEnumerator _coPlay;
 
         public abstract IEnumerator CoPlay();
 
         public virtual void Play()
         {
+            if (!gameObject.activeInHierarchy)
+            {
+                gameObject.SetActive(true);
+            }
+            
             _coPlay = CoPlay();
-            StartCoroutine(_coPlay);
-            ;        }
+            StartCoroutine(_coPlay); 
+        }
 
         public virtual void Stop()
         {
             if(_coPlay != null) StopCoroutine(_coPlay);
             _coPlay = null;
+
+            if (activeOffWhenStop && gameObject.activeInHierarchy)
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         public virtual void Pause()
@@ -38,6 +52,19 @@ namespace CoverFrog
         {
             if(_coPlay != null) StopCoroutine(_coPlay);
             _coPlay = null;
+
+            if (activeOffWhenComplete && gameObject.activeInHierarchy)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        public void OnEnable()
+        {
+            if (playWhenEnable)
+            {
+                Play();
+            }
         }
 
         public virtual void OnDisable()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CoverFrog
 {
-    public class DirectionGrow : Direction
+    public class ProcessGamePlay : Process
     {
         public override IEnumerator CoPlay()
         {

@@ -10,6 +10,7 @@ namespace CoverFrog
     {
         Title,
         LevelSelect,
+        Fade,
     }
     
     public enum InProcessState
@@ -19,6 +20,12 @@ namespace CoverFrog
         Pause,
         UnPauseWait,
         Completed,
+    }
+
+    [Serializable]
+    public class ProcessData
+    {
+        [SerializeField, Range(3, 4)] public int levelSelectMaxCount = 3;
     }
 
     [RequireComponent(typeof(SharedMemoryManager))]
@@ -82,19 +89,39 @@ namespace CoverFrog
         {
             if (!playWhenOnStart)
                 return;
+            
+            foreach (var value in Processes.Values)
+                value.gameObject.SetActive(false);
 
-            ToState(ProcessState.Title);
+            currentState = ProcessState.Title;
+            Processes[currentState].Play();
         }
 
-        public void ToState(ProcessState nextState)
+        #region > To State
+        public void ToStateBetweenFade(ProcessState nextState)
         {
-            ToState(currentState, currentState = nextState);
+            if (Processes[ProcessState.Fade] is not ProcessFade fade)
+                return;
+
+            var nextProcess = Processes[nextState];
+            
+            if(nextProcess is ProcessLevelSelect levelSelect)
+                ToLevelSelect(levelSelect, fade, 3);
         }
 
-        private void ToState(ProcessState prevState, ProcessState nextState)
+        private void ToLevelSelect(ProcessLevelSelect levelSelect, ProcessFade fade, int levelMaxCount)
         {
-            Processes[prevState].Stop();
-            Processes[nextState].Play();
+            fade.BeTweenPlayWithCallback(() =>
+            {
+                Processes[ProcessState.Title].SetActive(false);
+                Processes[ProcessState.LevelSelect].SetActive(true);
+                
+            }, () =>
+            {
+                
+            });
         }
+
+        #endregion
     }
 }

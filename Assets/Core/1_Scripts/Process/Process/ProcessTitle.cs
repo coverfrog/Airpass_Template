@@ -15,13 +15,15 @@ namespace CoverFrog
         public override IEnumerator CoPlay()
         {
             yield return new WaitForSeconds(waitDurationAutoCompleted);
+            
+            Completed();
         }
 
         public override void Completed()
         {
             base.Completed();
 
-            ProcessManager.Instance.ToState(ProcessState.LevelSelect);
+            ProcessManager.Instance.ToStateBetweenFade(ProcessState.LevelSelect);
         }
     }
 }

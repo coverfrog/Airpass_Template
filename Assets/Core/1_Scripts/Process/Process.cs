@@ -11,6 +11,11 @@ namespace CoverFrog
 
         public InProcessState CurrentState => currentState;
 
+        public virtual void SetActive(bool isActive)
+        {
+            gameObject.SetActive(isActive);
+        }
+
         public override void OnDisable()
         {
             base.OnDisable();

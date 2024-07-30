@@ -370,10 +370,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC624\uB298\uC758 \uBBF8\uC138\uBA3C\uC9C0 \uB18D\uB3C4 \uC5B4\uB5A8\uAE4C\uC694?\n\uCC3D
-    \uBC16\uC758 \uBBF8\uC138\uBA3C\uC9C0 \uB18D\uB3C4\uB97C \uD655\uC778\uD558\uC5EC\n\uCC3D\uBB38\uC744
-    \uB2EB\uC544\uC8FC\uC138\uC694! \n\uACF5\uAE30\uCCAD\uC815\uAE30\uB97C \uCF1C\uB294
-    \uAC83\uB3C4 \uC78A\uC9C0 \uB9C8\uC138\uC694!"
+  m_Text: 
 --- !u!1 &9008607190367865465
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Select Helper 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1352523437667521987, guid: 02fb512539ea2e041b7be30839c613a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4975031452050976653, guid: 02fb512539ea2e041b7be30839c613a3, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -692,7 +693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309697753032796398, guid: 02fb512539ea2e041b7be30839c613a3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5309697753032796398, guid: 02fb512539ea2e041b7be30839c613a3, type: 3}
       propertyPath: m_AnchorMin.x
@@ -700,7 +701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309697753032796398, guid: 02fb512539ea2e041b7be30839c613a3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5309697753032796398, guid: 02fb512539ea2e041b7be30839c613a3, type: 3}
       propertyPath: m_SizeDelta.x
@@ -740,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309697753032796398, guid: 02fb512539ea2e041b7be30839c613a3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1489.5
       objectReference: {fileID: 0}
     - target: {fileID: 5309697753032796398, guid: 02fb512539ea2e041b7be30839c613a3, type: 3}
       propertyPath: m_AnchoredPosition.y

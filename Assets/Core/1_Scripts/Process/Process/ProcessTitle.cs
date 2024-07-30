@@ -7,14 +7,17 @@ namespace CoverFrog
 {
     public class ProcessTitle : Process
     {
-        [SerializeField, Range(1.0f, 10.0f)] private float waitDurationAutoCompleted = 3.0f;
-        [Space]
-        [SerializeField] private Text textTitle;
-        [SerializeField] private List<FlipBook> flipBooks;
-        
-        public override IEnumerator CoPlay()
+        public override void Init(params object[] values)
         {
-            yield return new WaitForSeconds(waitDurationAutoCompleted);
+            
+        }
+        
+        public override IEnumerator CoPlay(params object[] values)
+        {
+            // [0]
+            var titleWaitDuration = (float)values[0];
+            
+            yield return new WaitForSeconds(titleWaitDuration);
             
             Completed();
         }
@@ -23,7 +26,7 @@ namespace CoverFrog
         {
             base.Completed();
 
-            ProcessManager.Instance.ToStateBetweenFade(ProcessState.LevelSelect);
+            ProcessManager.Instance.ToState(ProcessState.LevelSelect);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace CoverFrog
             transform.localScale = Vector3.one * scale;
         }
 
-        public override IEnumerator CoPlay()
+        public override IEnumerator CoPlay(params object[] values)
         {
             // 15 30 
             

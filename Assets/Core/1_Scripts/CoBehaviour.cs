@@ -14,17 +14,18 @@ namespace CoverFrog
         
         private IEnumerator _coPlay;
 
-        public abstract IEnumerator CoPlay();
+        public abstract IEnumerator CoPlay(params object[] values);
 
-        public virtual void Play()
+        // ReSharper disable Unity.PerformanceAnalysis
+        public virtual void Play(params object[] values)
         {
             if (!gameObject.activeInHierarchy)
             {
                 gameObject.SetActive(true);
             }
-            
-            _coPlay = CoPlay();
-            StartCoroutine(_coPlay); 
+
+            _coPlay = CoPlay(values);
+            StartCoroutine(_coPlay);
         }
 
         public virtual void Stop()
@@ -59,7 +60,7 @@ namespace CoverFrog
             }
         }
 
-        public void OnEnable()
+        public virtual void OnEnable()
         {
             if (playWhenEnable)
             {

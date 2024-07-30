@@ -23,6 +23,11 @@ namespace CoverFrog
         private float _alphaStartCurrent, _alphaEndCurrent;
         private Action _callbackBetween, _callbackEnd;
 
+        public override void Init(params object[] values)
+        {
+            
+        }
+        
         public void BeTweenPlayWithCallback(Action callbackBetween, Action callbackEnd)
         {
             if(_isPlaying) 
@@ -53,9 +58,11 @@ namespace CoverFrog
             _callbackEnd?.Invoke();
             
             Stop();
+            
+            gameObject.SetActive(false);
         }
 
-        public override IEnumerator CoPlay()
+        public override IEnumerator CoPlay(params object[] values)
         {
             Cg.alpha = _alphaStartCurrent;
             

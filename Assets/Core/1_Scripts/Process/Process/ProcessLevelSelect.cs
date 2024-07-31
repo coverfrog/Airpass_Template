@@ -8,44 +8,75 @@ namespace CoverFrog
 {
     public class ProcessLevelSelect : Process
     {
-        #region > Helpers
-        private List<ProcessHelperLevelSelect> _helpers;
+        #region > Values
+        private List<HelperLevelSelect> _helpers;
 
-        private List<ProcessHelperLevelSelect> Helpers =>
+        private List<HelperLevelSelect> Helpers =>
             _helpers ??= HelpersInit();
 
-        private List<ProcessHelperLevelSelect> HelpersInit()
+        private List<HelperLevelSelect> HelpersInit()
         {
-            var helpers = new List<ProcessHelperLevelSelect>();
+            var helpers = new List<HelperLevelSelect>();
             
             foreach (Transform tr in transform.GetChild(2))
             {
-                var helper = tr.GetComponent<ProcessHelperLevelSelect>();
+                var helper = tr.GetComponent<HelperLevelSelect>();
                 
                 if (helper == null)
                     continue;
                 
-                helper.AddAction(OnEnter, helper);
+                helper.AddAction(OnClick_LevelSelect, helper);
                 helpers.Add(helper);
             }
 
             return helpers;
         }
-        #endregion
 
         private Text _levelDescriptionText;
         private Text LevelDescriptionText => _levelDescriptionText ??=
             transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>();
+        
+        #endregion
+
+        //
         
         private bool _isEnter;
 
         public override void OnEnable()
         {
             base.OnEnable();
-
+            
+            PopupManager.Instance.OnCountUp += Pause;
+            PopupManager.Instance.OnCountDown += UnPause;
+            
             _isEnter = false;
+            Helpers.ForEach(h => h.SetInteract(true));
         }
 
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            
+            PopupManager.Instance.OnCountUp -= Pause;
+            PopupManager.Instance.OnCountDown -= UnPause;
+        }
+
+        //
+
+        public override void Pause()
+        {
+            base.Pause();
+            AudioManager.Instance.Pause(AudioType.Narration);
+        }
+
+        public override void UnPause()
+        {
+            base.UnPause();
+            AudioManager.Instance.UnPause(AudioType.Narration);
+        }
+
+        //
+        
         public override void Init(params object[] values)
         {
             // [0] level max count
@@ -75,26 +106,7 @@ namespace CoverFrog
             gameObject.SetActive(true);
         }
 
-        private void OnEnter(ProcessHelper helper)
-        {
-            if(_isEnter)
-                return;
-            
-            if(helper is not ProcessHelperLevelSelect levelSelect)
-                return;
-
-            _isEnter = true;
-            
-            
-            var selectLevel = levelSelect.Level;
-            
-            AudioManager.Instance.Stop(AudioType.Narration);
-            
-            ProcessManager.Instance.OnLevelSelected(selectLevel);
-            ProcessManager.Instance.ToState(ProcessState.ConceptVideo);
-        }
-
-        public override IEnumerator CoPlay(params object[] values)
+        protected override IEnumerator CoPlay(params object[] values)
         {
             // [0] level Select AudioName
             var levelSelectAudioName = (AudioName)values[0];
@@ -105,6 +117,28 @@ namespace CoverFrog
             {
                 yield return null;
             }
+        }
+        
+        //
+        
+        private void OnClick_LevelSelect(Helper helper)
+        {
+            if(_isEnter)
+                return;
+            
+            if(helper is not HelperLevelSelect levelSelect)
+                return;
+
+            _isEnter = true;
+            
+            Helpers.ForEach(h => h.SetInteract(true));
+            
+            var selectLevel = levelSelect.Level;
+            
+            AudioManager.Instance.Stop(AudioType.Narration);
+            
+            ProcessManager.Instance.OnLevelSelected(selectLevel);
+            ProcessManager.Instance.ToState(ProcessState.ConceptVideo);
         }
     }
 }

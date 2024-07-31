@@ -71,6 +71,18 @@ namespace CoverFrog
             source.clip = null;
         }
 
+        public void Pause(AudioType audioType)
+        {
+            var source = _audioSources[audioType];
+            source.Pause();
+        }
+
+        public void UnPause(AudioType audioType)
+        {
+            var source = _audioSources[audioType];
+            source.UnPause();
+        }
+
         public bool IsPlaying(AudioType audioType)
         {
             var source = _audioSources[audioType];
@@ -86,10 +98,23 @@ namespace CoverFrog
             _audioSources[audioType].loop = isLoop;
         }
 
-
-        public override void Awake()
+        public void SetVolume(OptionName optionName, float value)
         {
-            base.Awake();
+            value = Mathf.Clamp01(value);
+
+            var target = optionName switch
+            {
+                OptionName.Bgm => AudioType.Bgm,
+                OptionName.Sfx => AudioType.Sfx,
+                OptionName.Narration => AudioType.Narration,
+                _ => throw new ArgumentOutOfRangeException(nameof(optionName), optionName, null)
+            };
+
+            _audioSources[target].volume = value;
+        }
+
+        public void Awake()
+        {
             _ = AudioSources;
         }
     }

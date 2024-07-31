@@ -7,15 +7,24 @@ namespace CoverFrog
 {
     public abstract class CoBehaviour : MonoBehaviour
     {
-        [Header("[ Sequence Option ]")]
+        [Header("[ CoBehaviour ]")]
         [SerializeField] private bool playWhenEnable;
         [SerializeField] private bool activeOffWhenStop;
         [SerializeField] private bool activeOffWhenComplete;
         
         private IEnumerator _coPlay;
 
-        public abstract IEnumerator CoPlay(params object[] values);
+        public abstract void Init(params object[] values);
 
+        protected abstract IEnumerator CoPlay(params object[] values);
+
+        public void SetActive(bool isActive)
+        {
+            gameObject.SetActive(isActive);
+        }
+
+        public bool ActiveInHierarchy => gameObject.activeInHierarchy;
+        
         // ReSharper disable Unity.PerformanceAnalysis
         public virtual void Play(params object[] values)
         {

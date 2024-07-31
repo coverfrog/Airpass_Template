@@ -7,16 +7,10 @@ namespace CoverFrog
 {
     public abstract class Process : CoBehaviour 
     {
+        [Header("[ Process ]")]
         [SerializeField] private InProcessState currentState;
 
         public InProcessState CurrentState => currentState;
-
-        public abstract void Init(params object[] values);
-
-        public void SetActive(bool isActive)
-        {
-            gameObject.SetActive(isActive);
-        }
 
         public override void OnDisable()
         {

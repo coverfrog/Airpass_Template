@@ -8,6 +8,7 @@ using UnityEngine.Video;
 
 namespace CoverFrog
 {
+    #region > Datas
     public enum ProcessState
     {
         Title,
@@ -16,7 +17,7 @@ namespace CoverFrog
         GamePlay,
         ConceptVideo,
         Narration,
-        Clear
+        Result,
     }
     
     public enum InProcessState
@@ -28,6 +29,13 @@ namespace CoverFrog
         Completed,
     }
 
+    public enum ResultScoreType
+    {
+        Text,
+        Int,
+        Float
+    }
+
     [Serializable]
     public class ProcessData
     {
@@ -35,6 +43,7 @@ namespace CoverFrog
         [SerializeField, Range(1.0f, 10.0f)] public float titleWaitDuration = 3.0f;
 
         [Header("# --- Game Play --- #")] 
+        [SerializeField] public bool gamePlayIsAlwaysGameWin;
         [SerializeField] public float gamePlayDuration = 120.0f;
         
         [Header("# --- Level Select --- #")]
@@ -51,10 +60,15 @@ namespace CoverFrog
         
         [Header("# --- Narration --- #")] 
         [SerializeField] private List<ProcessNarrationData> narrationDatas;
-
+        
         public IReadOnlyList<ProcessNarrationData> NarrationAudioNames
             => narrationDatas.OrderBy(an => an.index).ToList();
+
+        [Header("# --- Result --- #")] 
+        [SerializeField] public int resultTextSize = 100;
+        [SerializeField, TextArea] public string resultScoreFormat;
     }
+    #endregion
 
     [RequireComponent(typeof(SharedMemoryManager))]
     [RequireComponent(typeof(PlatformProtocol))]
@@ -70,8 +84,9 @@ namespace CoverFrog
         [Header("[ Data ]")] 
         [SerializeField] private ProcessData processData;
 
+        private object _resultValue;
+        
         #region > Processes
-
         private Dictionary<ProcessState, Process> _processes;
 
         private Dictionary<ProcessState, Process> Processes => _processes ??= InitProcess();
@@ -109,14 +124,23 @@ namespace CoverFrog
 
             return newProcesses;
         }
+        #endregion
 
-        public ProcessState CurrentState => currentState;
+        #region > Instances
+
+        private AudioManager _audioIns;
+        private AudioManager AudioIns => 
+            _audioIns ??= AudioManager.Instance;
+        
+        private PopupManager _popupIns;
+        private PopupManager PopupIns =>
+            _popupIns ??= PopupManager.Instance;
         
         #endregion
 
-        public override void Awake()
+        #region > Unity
+        public void Awake()
         {
-            base.Awake();
             _ = Processes;
         }
 
@@ -124,14 +148,38 @@ namespace CoverFrog
         {
             if (!playWhenOnStart)
                 return;
-            
-            foreach (var value in Processes.Values)
-                value.gameObject.SetActive(false);
 
+            ActiveAll(false);
             ToState(ProcessState.Title);
             
-            AudioManager.Instance.Play(AudioType.Bgm, AudioName.Bgm);
-            AudioManager.Instance.SetLoop(AudioType.Bgm, true);
+            AudioIns.Play(AudioType.Bgm, AudioName.Bgm);
+            AudioIns.SetLoop(AudioType.Bgm, true);
+        }
+        #endregion
+
+        private void ActiveAll(bool isActive)
+        {
+            foreach (var value in Processes.Values)
+                value.SetActive(isActive);
+        }
+
+        public void OnLevelSelected(int selectLevel)
+        {
+            selectedLevel = selectLevel;
+        }
+
+        public void OnGamePlayComplete(object value)
+        {
+            _resultValue = value;
+        }
+
+        public void OnQuit()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
 
         #region > To State
@@ -145,7 +193,7 @@ namespace CoverFrog
             switch (nextProcess)
             {
                 case ProcessTitle title:
-                    ToTile(title);
+                    ToTitle(title);
                     break;
                 case ProcessLevelSelect levelSelect:
                     ToLevelSelect(levelSelect, fade);
@@ -159,12 +207,17 @@ namespace CoverFrog
                 case ProcessNarration narration:
                     ToNarration(narration, fade);
                     break;
-            }
                 
+                case ProcessResult result:
+                    ToResult(result);
+                    break;
+            }
         }
-
-        private void ToTile(ProcessTitle title)
+        
+        private void ToTitle(ProcessTitle title)
         {
+            PopupIns.ToTitle();
+
             title.Play(processData.titleWaitDuration);
         }
 
@@ -172,8 +225,11 @@ namespace CoverFrog
         {
             fade.BeTweenPlayWithCallback(() =>
             {
+
                 Processes[ProcessState.Title].SetActive(false);
-                Processes[ProcessState.GamePlay].Init(processData.gamePlayDuration);
+                Processes[ProcessState.GamePlay].Init(
+                    processData.gamePlayDuration,
+                    processData.gamePlayIsAlwaysGameWin);
 
                 levelSelect.Init(
                     processData.levelSelectMaxCount, 
@@ -192,7 +248,9 @@ namespace CoverFrog
             {
                 Processes[ProcessState.LevelSelect].SetActive(false);
                 
-                conceptVideo.Init(processData.conceptVideoSprite, processData.conceptVideo);
+                conceptVideo.Init(
+                    processData.conceptVideoSprite, 
+                    processData.conceptVideo);
                 
             }, () =>
             {
@@ -208,7 +266,9 @@ namespace CoverFrog
             {
                 Processes[ProcessState.ConceptVideo].SetActive(false);
                 
-                narration.Init(narrationData.descriptionText);
+                narration.Init(
+                    narrationData.descriptionText,
+                    narrationData.fontSize);
                 
             }, () =>
             {
@@ -218,18 +278,22 @@ namespace CoverFrog
 
         private void ToGamePlay(ProcessGamePlay gamePlay)
         {
-            AudioManager.Instance.Stop(AudioType.Narration);
+            AudioIns.Stop(AudioType.Narration);
             
             Processes[ProcessState.Narration].SetActive(false);
             
-            gamePlay.Play();
+            gamePlay.Play(
+                selectedLevel);
         }
 
+        private void ToResult(ProcessResult result)
+        {
+            result.Play(
+                _resultValue, 
+                processData.resultScoreFormat, 
+                processData.resultTextSize);
+        }
         #endregion
 
-        public void OnLevelSelected(int selectLevel)
-        {
-            selectedLevel = selectLevel;
-        }
     }
 }

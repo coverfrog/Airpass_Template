@@ -10,6 +10,8 @@ namespace CoverFrog
 {
     public class ProcessConceptVideo : Process
     {
+        #region > Values
+
         private Image _previewImage;
         private Image PreviewImage =>
             _previewImage ??= transform.GetChild(0).GetComponent<Image>();
@@ -22,13 +24,34 @@ namespace CoverFrog
         private VideoPlayer Player => 
             _player ??= transform.GetChild(1).GetComponent<VideoPlayer>();
 
-        private Button _skipBtn;
-        private Button SkipBtn => 
-            _skipBtn ??= transform.GetChild(2).GetComponent<Button>();
+        private HelperConceptVideo _skipHelper;
+
+        private HelperConceptVideo SkipBtn
+        {
+            get
+            {
+                if (_skipHelper != null)
+                    return _skipHelper;
+                
+                _skipHelper = transform.GetChild(2).GetComponent<HelperConceptVideo>();
+                _skipHelper.AddAction(Onclick_Skip, _skipHelper);
+
+                return _skipHelper;
+            }
+        }
+        #endregion
+
+        private bool _isEnter;
 
         private void Awake()
         {
-            SkipBtn.onClick.AddListener(Skip);
+            _ = SkipBtn;
+        }
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            _isEnter = false;
         }
 
         public override void Init(params object[] values)
@@ -53,16 +76,31 @@ namespace CoverFrog
             
             gameObject.SetActive(true);
         }
-        
-        public override IEnumerator CoPlay(params object[] values)
+
+        protected override IEnumerator CoPlay(params object[] values)
         {
             Player.Play();
             yield return null;
         }
 
-        private void Skip()
+        public override void Pause()
         {
+            Player.Pause();
+            base.Pause();
+        }
+
+        private void Onclick_Skip(Helper helper)
+        {
+            if(_isEnter)
+                return;
+            
+            if(helper is not HelperConceptVideo conceptVideo)
+                return;
+
+            _isEnter = true;
+            
             Pause();
+            
             ProcessManager.Instance.ToState(ProcessState.Narration);
         }
     }

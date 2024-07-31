@@ -11,8 +11,8 @@ namespace CoverFrog
         {
             
         }
-        
-        public override IEnumerator CoPlay(params object[] values)
+
+        protected override IEnumerator CoPlay(params object[] values)
         {
             // [0]
             var titleWaitDuration = (float)values[0];

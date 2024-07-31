@@ -62,7 +62,7 @@ namespace CoverFrog
             gameObject.SetActive(false);
         }
 
-        public override IEnumerator CoPlay(params object[] values)
+        protected override IEnumerator CoPlay(params object[] values)
         {
             Cg.alpha = _alphaStartCurrent;
             

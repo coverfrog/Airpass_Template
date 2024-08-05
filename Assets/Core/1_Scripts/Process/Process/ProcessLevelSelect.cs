@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace CoverFrog
 {
@@ -38,6 +39,10 @@ namespace CoverFrog
         
         #endregion
 
+        [SerializeField] private Image previewImg;
+        [SerializeField] private RawImage rawImage;
+        [SerializeField] private VideoPlayer videoPlayer;
+        
         //
         
         private bool _isEnter;
@@ -102,12 +107,28 @@ namespace CoverFrog
             LevelDescriptionText.fontSize =
                 levelSelectFontSize;
             
+            // [3] [4] sprite, video
+            var renderTex 
+                = new RenderTexture(320, 330, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+
+            rawImage.texture
+                = renderTex;
+            
+            previewImg.sprite = (Sprite)values[3];
+            
+            videoPlayer.targetTexture = renderTex;
+            videoPlayer.clip = (VideoClip)values[4];
+            videoPlayer.frame = 1;
+            videoPlayer.playbackSpeed = 3.0f;
+            
             // _
             gameObject.SetActive(true);
         }
 
         protected override IEnumerator CoPlay(params object[] values)
         {
+            videoPlayer.Play();
+            
             // [0] level Select AudioName
             var levelSelectAudioName = (AudioName)values[0];
             var audioInstance = AudioManager.Instance;

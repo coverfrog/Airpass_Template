@@ -45,8 +45,10 @@ namespace CoverFrog
         [Header("# --- Game Play --- #")] 
         [SerializeField] public bool gamePlayIsAlwaysGameWin;
         [SerializeField] public float gamePlayDuration = 120.0f;
-        
-        [Header("# --- Level Select --- #")]
+
+        [Header("# --- Level Select --- #")] 
+        [SerializeField] public Sprite levelSelectPreviewSprite;
+        [SerializeField] public VideoClip levelSelectVideo;
         [SerializeField, Range(3, 4)] public int levelSelectMaxCount = 3;
         [SerializeField] public int levelSelectFontSize = 50;
         [SerializeField] public AudioName levelSelectAudioName;
@@ -152,7 +154,7 @@ namespace CoverFrog
             ActiveAll(false);
             ToState(ProcessState.Title);
             
-            // AudioIns.Play(AudioType.Bgm, AudioName.Bgm);
+            AudioIns.Play(AudioType.Bgm, AudioName.Bgm);
             AudioIns.SetLoop(AudioType.Bgm, true);
         }
         #endregion
@@ -235,7 +237,9 @@ namespace CoverFrog
                 levelSelect.Init(
                     processData.levelSelectMaxCount, 
                     processData.levelSelectText,
-                    processData.levelSelectFontSize);
+                    processData.levelSelectFontSize,
+                    processData.levelSelectPreviewSprite,
+                    processData.levelSelectVideo);
                 
             }, () =>
             {

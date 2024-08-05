@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f20e94c521d7d4e810554963933147, type: 3}
   m_Name: FlipBook Database
   m_EditorClassIdentifier: 
-  writePath: Assets\Core\1_Scripts\Anim
+  writePath: Assets\Core\1_Scripts\Anim\AnimFlipBook
   writeNameSpace: CoverFrog
   writeEnumName: AnimFlipBookName
   flipBookDataList:

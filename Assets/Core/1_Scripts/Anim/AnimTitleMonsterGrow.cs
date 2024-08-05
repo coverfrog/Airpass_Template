@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CoverFrog
@@ -17,6 +18,7 @@ namespace CoverFrog
 
         [Header("[ Monster Grow ]")] 
         [SerializeField] private int startFrame;
+        [SerializeField] private float delay;
 
         
         private void SetScale(float scale)
@@ -35,15 +37,17 @@ namespace CoverFrog
             
             // Define Value
             SetScale(0);
+
+            yield return new WaitForSeconds(delay);
             
             var frames = new[] 
-                { 0, 5, 8, 11, 15 } ;
+                { 0 / 15.0f, 5 / 15.0f, 8 / 15.0f, 11 / 15.0f, 15 / 15.0f};
 
             var scales = new[]
                 { 0.0f, 1.2f, 0.8f, 1.1f, 1.0f };
             
             // Wait Start Frame
-            for (var i = 0; i < startFrame; ++i)
+            for (var f = 0.0f; f < startFrame / 15.0f; f += Time.deltaTime)
             {
                 yield return null;
             }
@@ -54,11 +58,11 @@ namespace CoverFrog
             
             for (; index < frames.Length; ++index)
             {
-                var endFrame = frames[index] * 4;
+                var endFrame = frames[index];
                 
-                for (var frame = 0; frame < endFrame; ++frame)
+                for (var frame = 0.0f; frame < endFrame; frame += Time.deltaTime * 2.85f)
                 {
-                    var percent = (float)frame / endFrame;
+                    var percent = frame / endFrame;
                     var scale = Mathf.Lerp(startScale, scales[index], percent);
                     
                     SetScale(scale);

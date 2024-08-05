@@ -4,106 +4,61 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using StringBuilder = System.Text.StringBuilder;
 
 namespace CoverFrog
 {
     [CreateAssetMenu(menuName = "CoverFrog/Audio Database", fileName = "Audio Database")]
     public class AudioDatabase : ScriptableObject
     {
-        [Header("[ Text ]")] 
-        [SerializeField] private string writePath;
-        [SerializeField] private string writeNameSpaceName = "CoverFrog";
-        [SerializeField] private string writeEnumName = "AudioName";
-        
+        [Header("[ Write ]")] 
+        public string writePath      = @"Assets\Core\1_Scripts\Anim";
+        public string writeNameSpace = "CoverFrog";
+        public string writeEnumName  = "AnimFlipBookName";
+
         [Header("[ Data ]")]
-        [SerializeField] private List<string> audioPaths;
-        [SerializeField] private List<AudioClip> audioClips;
+        public List<AudioData> audioClipList;
 
-        public AudioClip Get(AudioName audioName) => audioClips.FirstOrDefault(c => c.name == audioName.ToString());
-        
-        [ContextMenu("[ CoverFrog ] [ Path ] Audio Write Path Select")]
-        private void AudioWritePathSelect()
-        {
+        public AudioClip Get(AudioName audioName) => audioClipList.FirstOrDefault(c => c.Name == audioName)?.Clip;
+
+        #region > Editor
 #if UNITY_EDITOR
-            var selectedFolderPath = EditorUtility.OpenFolderPanel("Select Path", Application.dataPath, string.Empty);
-            if(!selectedFolderPath.Contains(Application.dataPath))
-                return;
 
-            writePath = "Assets" + selectedFolderPath.Split("Assets")[^1];
+        [ContextMenu("[ Cf ] Update ")]
+        private void Parse()
+        {
+            // data define
+            const string rootKey = "Audios";
+            var rootPath = $@"Assets/Resources/{rootKey}";
+
+            // data init
+            audioClipList = new List<AudioData>();
+
+            // data check exist
+            if (!Directory.Exists(rootPath))
+                Directory.CreateDirectory(rootPath);
+
+            // get keys
+            var keys = Directory.GetFiles(rootPath).Select(x => x.Split('/', '\\')[^1]);
             
-            AssetDatabase.Refresh();
-            AssetDatabase.SaveAssets();
-#endif
-        }
-        
-        [ContextMenu("[ CoverFrog ] [ Path ] Audio Path Add")]
-        private void AudioPathAdd()
-        {
-#if UNITY_EDITOR
-            var selectedFolderPath = EditorUtility.OpenFolderPanel("Select Path", "", "");
-            if(!selectedFolderPath.Contains(Application.dataPath))
-                return;
-
-            audioPaths.Add("Assets" + selectedFolderPath.Split("Assets")[^1]);
-            
-            AssetDatabase.Refresh();
-            AssetDatabase.SaveAssets();
-#endif
-
-        }
-
-        [ContextMenu("[ CoverFrog ] Clip Parse")]
-        private void Parsed()
-        {
-#if UNITY_EDITOR
-            const string pattern = @"[^가-힣a-zA-Z0-9]";
-
-            var clips = new List<AudioClip>();
-
-            foreach (var selectedFolderPath in audioPaths)
-            {
-                foreach (var selectedClipPath in Directory.GetFiles(selectedFolderPath))
-                {
-                    Debug.Log(selectedClipPath);
-
-                    if (selectedClipPath.Contains("meta"))
-                        continue;
-
-                    if (selectedClipPath.Contains(".mp3") || selectedClipPath.Contains(".wav"))
-                    {
-                        var clip = AssetDatabase.LoadAssetAtPath<AudioClip>(selectedClipPath);
-                        clip.name = Regex.Replace(clip.name, pattern, "");
-
-                        clips.Add(clip);
-                        
-                    }
-                }
-            }
-
-            audioClips = clips;
-            
-            AssetDatabase.Refresh();
-            AssetDatabase.SaveAssets();
-#endif
-        }
-
-        [ContextMenu("[ CoverFrog ] Enum Write")]
-        private void EnumWrite()
-        {
-#if UNITY_EDITOR
+            // write enums
             var nameBuilder = new StringBuilder();
-            
-            foreach (var audioClip in audioClips)
+            foreach (var key in keys)
             {
-                nameBuilder.Append("\t\t").Append(audioClip.name).Append(",").Append("\n");
+                var splits = key.Split('.');
+                
+                if(key.Contains("meta"))
+                    continue;
+                
+                var appendName = splits[0];
+                
+                nameBuilder.Append("\t\t").Append(appendName).Append(",").Append("\n");
             }
             
             var pilBuilder = new StringBuilder();
-
-            pilBuilder.Append($"namespace {writeNameSpaceName}\n").
+            pilBuilder.Append($"namespace {writeNameSpace}\n").
                 Append("{\n").
                 Append($"\tpublic enum {writeEnumName}\n").
                 Append("\t{\n").
@@ -113,15 +68,43 @@ namespace CoverFrog
 
             var saveData = pilBuilder.ToString();
             var savePath = Path.Combine(writePath, $"{writeEnumName}.cs");
+            
+            
+            foreach (var directory in Directory.GetFiles(rootPath))
+            {
+                var key = directory.Split('/', '\\')[^1];
+                
+                if(key.Contains("meta"))
+                    continue;
 
+                var clipKey = key.Split('.')[0];
+                var clip = Resources.Load<AudioClip>(Path.Combine(rootKey, clipKey));
+                
+                audioClipList.Add(new AudioData(clipKey, clip));
+            }
+            
             if(File.Exists(savePath))
                 File.Delete(savePath);
             
             File.WriteAllText(savePath, saveData);
             
-            AssetDatabase.Refresh();
+            // save
+            
             AssetDatabase.SaveAssets();
-#endif
+            AssetDatabase.Refresh();
         }
+
+        [ContextMenu("[ Cf ] Convert ")]
+        private void Convert()
+        {
+            foreach (var data in audioClipList)
+            {
+                data.Convert();
+            }
+        }
+#endif
+        #endregion
+
+        
     }
 }

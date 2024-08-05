@@ -13,15 +13,27 @@ MonoBehaviour:
   m_Name: Audio Database
   m_EditorClassIdentifier: 
   writePath: Assets/Core/1_Scripts/Audio
-  writeNameSpaceName: CoverFrog
+  writeNameSpace: CoverFrog
   writeEnumName: AudioName
-  audioPaths:
-  - Assets/Core/5_Audios
-  audioClips:
-  - {fileID: 8300000, guid: fdb6a46d974e9ec46851632ab9211b66, type: 3}
-  - {fileID: 8300000, guid: e095862fd116a6247b955da252ee6b56, type: 3}
-  - {fileID: 8300000, guid: d78b234d590c51a469ae56bef6bba7fb, type: 3}
-  - {fileID: 8300000, guid: 361b77cd3b3519c4e8e258e2a6beca69, type: 3}
-  - {fileID: 8300000, guid: 0d3443bdce02c5c47ba52463ca2b5d37, type: 3}
-  - {fileID: 8300000, guid: 7fda5ce52784f0949bc54b7579bbdcf2, type: 3}
-  - {fileID: 8300000, guid: be9108147c002584a9b5f5320cc99ad5, type: 3}
+  audioClipList:
+  - audioName: 0
+    codeName: Bgm
+    audioClip: {fileID: 8300000, guid: fdb6a46d974e9ec46851632ab9211b66, type: 3}
+  - audioName: 1
+    codeName: GameSelect
+    audioClip: {fileID: 8300000, guid: e095862fd116a6247b955da252ee6b56, type: 3}
+  - audioName: 2
+    codeName: MonsterEffect_Yes
+    audioClip: {fileID: 8300000, guid: 7fda5ce52784f0949bc54b7579bbdcf2, type: 3}
+  - audioName: 3
+    codeName: MonsterEffect_Yohou
+    audioClip: {fileID: 8300000, guid: be9108147c002584a9b5f5320cc99ad5, type: 3}
+  - audioName: 4
+    codeName: Narration_0
+    audioClip: {fileID: 8300000, guid: d78b234d590c51a469ae56bef6bba7fb, type: 3}
+  - audioName: 5
+    codeName: Narration_1
+    audioClip: {fileID: 8300000, guid: 361b77cd3b3519c4e8e258e2a6beca69, type: 3}
+  - audioName: 6
+    codeName: Narration_2
+    audioClip: {fileID: 8300000, guid: 0d3443bdce02c5c47ba52463ca2b5d37, type: 3}

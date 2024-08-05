@@ -4,8 +4,8 @@ namespace CoverFrog
 	{
 		Bgm,
 		GameSelect,
-		몬스터효과음예,
-		몬스터효과음유후,
+		MonsterEffect_Yes,
+		MonsterEffect_Yohou,
 		Narration_0,
 		Narration_1,
 		Narration_2,

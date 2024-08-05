@@ -152,7 +152,7 @@ namespace CoverFrog
             ActiveAll(false);
             ToState(ProcessState.Title);
             
-            AudioIns.Play(AudioType.Bgm, AudioName.Bgm);
+            // AudioIns.Play(AudioType.Bgm, AudioName.Bgm);
             AudioIns.SetLoop(AudioType.Bgm, true);
         }
         #endregion

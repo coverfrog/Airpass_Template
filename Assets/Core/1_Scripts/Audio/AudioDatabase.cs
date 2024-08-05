@@ -43,11 +43,11 @@ namespace CoverFrog
         private void AudioPathAdd()
         {
 #if UNITY_EDITOR
-            var selectedFolderPath = EditorUtility.OpenFolderPanel("Select Path", Application.dataPath, string.Empty);
+            var selectedFolderPath = EditorUtility.OpenFolderPanel("Select Path", "", "");
             if(!selectedFolderPath.Contains(Application.dataPath))
                 return;
 
-            audioPaths.Add("Assets" + writePath.Split("Assets")[^1]);
+            audioPaths.Add("Assets" + selectedFolderPath.Split("Assets")[^1]);
             
             AssetDatabase.Refresh();
             AssetDatabase.SaveAssets();
@@ -67,6 +67,8 @@ namespace CoverFrog
             {
                 foreach (var selectedClipPath in Directory.GetFiles(selectedFolderPath))
                 {
+                    Debug.Log(selectedClipPath);
+
                     if (selectedClipPath.Contains("meta"))
                         continue;
 
@@ -76,6 +78,7 @@ namespace CoverFrog
                         clip.name = Regex.Replace(clip.name, pattern, "");
 
                         clips.Add(clip);
+                        
                     }
                 }
             }

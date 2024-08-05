@@ -22,6 +22,8 @@ namespace CoverFrog
 
         private Dictionary<AudioType, AudioSource> InitAudioSources()
         {
+            _database = Resources.Load<AudioDatabase>("Audio Database");
+            
             var audioDictionary = new Dictionary<AudioType, AudioSource>();
             var enumNameArray = Enum.GetValues(typeof(AudioType));
 
@@ -46,19 +48,19 @@ namespace CoverFrog
         }
         #endregion
 
-        [SerializeField] private AudioDatabase database;
+        private AudioDatabase _database;
 
         public void Play(AudioType audioType, AudioName audioName)
         {
             var source = _audioSources[audioType];
-            source.clip = database.Get(audioName);
+            source.clip = _database.Get(audioName);
             source.Play();
         }
         
         public void Play(AudioType audioType, AudioName audioName, out AudioSource source)
         {
             source = _audioSources[audioType];
-            source.clip = database.Get(audioName);
+            source.clip = _database.Get(audioName);
             source.Play();
         }
 

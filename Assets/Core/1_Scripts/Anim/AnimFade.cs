@@ -19,6 +19,8 @@ namespace CoverFrog
         [Space]
         [SerializeField, Range(0.0f, 1.0f)] private float startAlpha;
         [SerializeField, Range(0.0f, 1.0f)] private float endAlpha = 1.0f;
+
+        public float Duration => duration;
         
         public override void Init(params object[] values)
         {

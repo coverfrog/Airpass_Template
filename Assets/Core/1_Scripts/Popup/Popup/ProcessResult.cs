@@ -8,9 +8,11 @@ namespace CoverFrog
 {
     public class ProcessResult : Process
     {
-        [Header("[ PopupResult ]")] 
+        [Header("[ PopupResult _ ]")] 
         [SerializeField] private Text scoreText;
-        [Space] 
+        [SerializeField] private AnimFade btnFade;
+        
+        [Header("[ PopupResult _ ]")] 
         [SerializeField] private HelperResult quitHelper;
         [SerializeField] private HelperResult retryHelper;
 
@@ -22,7 +24,8 @@ namespace CoverFrog
 
         public override void Init(params object[] values)
         {
-            
+            quitHelper.SetInteract(false);
+            retryHelper.SetInteract(false);
         }
 
         protected override IEnumerator CoPlay(params object[] values)
@@ -34,7 +37,10 @@ namespace CoverFrog
             scoreText.text = string.Format(valueFormat, value);
             scoreText.fontSize = txtSize;
 
-            yield return null;
+            yield return new WaitForSeconds(btnFade.Duration);
+            
+            quitHelper.SetInteract(true);
+            retryHelper.SetInteract(true);
         }
 
         private void OnClick_Quit(Helper helper)

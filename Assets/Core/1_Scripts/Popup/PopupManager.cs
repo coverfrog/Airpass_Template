@@ -76,7 +76,7 @@ namespace CoverFrog
         }
         #endregion
 
-        private void ActiveAll(bool isActive)
+        public void ActiveAll(bool isActive)
         {
             foreach (var value in Popups.Values)
                 value.SetActive(isActive);

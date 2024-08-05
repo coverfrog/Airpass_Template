@@ -12,6 +12,9 @@ namespace CoverFrog
         [SerializeField] private bool isGameWin;
         [SerializeField] private float gamePlayTimer;
 
+        [Header("[ Game Manager ]")] 
+        [SerializeField] private GameManager gameManager;
+        
         private int _score;
         private bool _isTimerReduce;
 
@@ -43,6 +46,7 @@ namespace CoverFrog
         public override void Pause()
         {
             base.Pause();
+            
             _isTimerReduce = false;
         }
 
@@ -57,31 +61,11 @@ namespace CoverFrog
         {
             base.Completed();
 
-            ProcessManager.Instance.OnGamePlayComplete(_score);
-            
-            if(_isAlwaysGameWin)
-                GameWin();
-            else
-            {
-                if (isGameWin)
-                    GameWin();
-                else
-                    GameLose();
-            }
+            ProcessManager.Instance.OnGamePlayComplete(_score); // value paste
+
+            gameManager.Completed(_isAlwaysGameWin || isGameWin);
         }
         
-        //
-        
-        private void GameWin()
-        {
-            ProcessManager.Instance.ToState(ProcessState.Result);
-        }
-
-        private void GameLose()
-        {
-            
-        }
-
         //
         
         public override void Init(params object[] values)
@@ -94,6 +78,9 @@ namespace CoverFrog
             _isAlwaysGameWin = (bool)values[1];
             
             // _
+            gameManager.Init();
+            
+            // _
             _isTimerReduce = false;
             gameObject.SetActive(true);
         }
@@ -102,6 +89,9 @@ namespace CoverFrog
         {
             // value[0] = selectLevel
             var selectLevel = (int)values[0];
+            
+            // _
+            gameManager.Play(selectLevel);
             
             // _
             _isTimerReduce = true;

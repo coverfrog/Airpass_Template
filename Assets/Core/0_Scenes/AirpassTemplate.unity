@@ -627,6 +627,7 @@ MonoBehaviour:
     narrationDatas:
     - codeName: Narration Data 0
       index: 0
+      fontSize: 50
       audioName: 4
       descriptionText: "\uD654\uBA74\uC744 \uD130\uCE58\uD558\uC5EC\n\uBBF8\uC138\uBA3C\uC9C0
         \uB18D\uB3C4\uAC00 '\uB098\uC068', \n'\uB9E4\uC6B0\uB098\uC068'\uC778 \uCC3D\uBB38\uC744
@@ -634,6 +635,7 @@ MonoBehaviour:
         \n\uACF5\uAE30\uCCAD\uC815\uAE30\uB3C4 \uCF24 \uC218 \uC788\uC5B4\uC694."
     - codeName: Narration Data 1
       index: 1
+      fontSize: 50
       audioName: 5
       descriptionText: "\uBBF8\uC138\uBA3C\uC9C0 \uB18D\uB3C4\uAC00\n'\uB9E4\uC6B0\uB098\uC068'\uC774
         \uB418\uBA74 \uCC3D\uBB38\uC744\n\uD130\uCE58\uD574\uC11C \uB2EB\uC544\uC8FC\uC138\uC694.\n\uACF5\uAE30\uB97C
@@ -641,6 +643,7 @@ MonoBehaviour:
         \uD130\uCE58\uD558\uC5EC\n\uCF24 \uC218 \uC788\uC5B4\uC694."
     - codeName: Narration Data 2
       index: 2
+      fontSize: 50
       audioName: 6
       descriptionText: "\uBBF8\uC138\uBA3C\uC9C0 \uB18D\uB3C4\uAC00 '\uB098\uC068',\n'\uB9E4\uC6B0\uB098\uC068'\uC774
         \uB418\uBA74 \uCC3D\uBB38\uC744\n\uD130\uCE58\uD574\uC11C \uB2EB\uC544\uC8FC\uC138\uC694.
@@ -747,6 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1690855340}
   - component: {fileID: 1690855341}
+  - component: {fileID: 1690855342}
   m_Layer: 5
   m_Name: GamePlay
   m_TagString: Untagged
@@ -794,6 +798,19 @@ MonoBehaviour:
   currentState: 0
   isGameWin: 0
   gamePlayTimer: 0
+  gameManager: {fileID: 1690855342}
+--- !u!114 &1690855342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690855339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52185b86231f90f4098f21a6cf4ee025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1756461921 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7121869455966357118, guid: 996199b0a20a5af4ea0550974cbafb0b, type: 3}
@@ -1213,10 +1230,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Result
       objectReference: {fileID: 0}
-    - target: {fileID: 1267617690830463928, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1267617690830463931, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1336,10 +1349,6 @@ PrefabInstance:
     - target: {fileID: 6557477379880338983, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804859876985275040, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
-      propertyPath: m_Text
-      value: "100 \uC810"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}

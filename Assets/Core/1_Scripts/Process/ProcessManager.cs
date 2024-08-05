@@ -207,7 +207,6 @@ namespace CoverFrog
                 case ProcessNarration narration:
                     ToNarration(narration, fade);
                     break;
-                
                 case ProcessResult result:
                     ToResult(result);
                     break;
@@ -225,8 +224,10 @@ namespace CoverFrog
         {
             fade.BeTweenPlayWithCallback(() =>
             {
+                PopupIns.ActiveAll(false);
 
                 Processes[ProcessState.Title].SetActive(false);
+                Processes[ProcessState.Result].SetActive(false);
                 Processes[ProcessState.GamePlay].Init(
                     processData.gamePlayDuration,
                     processData.gamePlayIsAlwaysGameWin);

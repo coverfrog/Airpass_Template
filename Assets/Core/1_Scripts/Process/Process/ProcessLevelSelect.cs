@@ -119,7 +119,6 @@ namespace CoverFrog
             videoPlayer.targetTexture = renderTex;
             videoPlayer.clip = (VideoClip)values[4];
             videoPlayer.frame = 1;
-            videoPlayer.playbackSpeed = 3.0f;
             
             // _
             gameObject.SetActive(true);

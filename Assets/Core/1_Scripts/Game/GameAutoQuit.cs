@@ -20,13 +20,15 @@ namespace CoverFrog
             
             foreach (var button in _vrBtnArr)
             {
+                if(button == null)
+                    continue;
                 
-                
-                button.OnHolding.AddListener(() =>
+                button.OnHolding?.AddListener(() =>
                 {
                     Init();
                 });
-                button.UnityBtn.onClick.AddListener(() =>
+                
+                button.UnityBtn?.onClick.AddListener(() =>
                 {
                     Init();
                 });

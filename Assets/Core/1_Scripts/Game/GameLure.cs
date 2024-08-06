@@ -42,7 +42,7 @@ namespace CoverFrog
                     Play();
                 });
                 
-                button.UnityBtn.onClick.AddListener(() =>
+                button.UnityBtn?.onClick.AddListener(() =>
                 {
                     Init();
                     Stop();

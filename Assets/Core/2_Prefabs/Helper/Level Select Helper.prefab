@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6240178442507382439}
   - component: {fileID: 3702205140919048339}
   - component: {fileID: 1253830228122218075}
+  - component: {fileID: 289813374161589540}
   m_Layer: 5
   m_Name: Level Select Helper
   m_TagString: Untagged
@@ -305,6 +306,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ad0a75beb811b46b0be291a74cae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &289813374161589540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352523437667521987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13c4bc32c47353499cb8b0558da22f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playWhenEnable: 0
+  activeOffWhenStop: 0
+  activeOffWhenComplete: 0
+  isCanLureToTrueEnable: 1
+  toCanLureWhenUnPause: 1
+  isCanLure: 1
+  delay: 0
+  speed: 3
+  minScale: 0.95
+  maxScale: 1
 --- !u!1 &5814206737907474461
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ namespace AirpassUnity.VRSports
         /* Add */
         public bool IsInteract { get; protected set; }
         public bool IsInteractPrev { get; protected set; }
+
+        public Button UnityBtn => _button;
         
         /*   */
         public static VRSportsButton interacting;

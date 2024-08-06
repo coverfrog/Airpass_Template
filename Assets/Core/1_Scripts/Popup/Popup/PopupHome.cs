@@ -10,6 +10,9 @@ namespace CoverFrog
         [Header("[ PopupHome ]")]
         [SerializeField] private HelperHome quitHelper;
         [SerializeField] private HelperHome resumeHelper;
+        [Space]
+        [SerializeField] private GameAutoQuit gameAutoQuit;
+
 
         private void Awake()
         {
@@ -29,11 +32,15 @@ namespace CoverFrog
 
         private void OnClick_Quit(Helper helper)
         {
+            gameAutoQuit.Stop();
+            
             ProcessManager.Instance.OnQuit();
         }
 
         private void OnClick_Resume(Helper helper)
         {
+            gameAutoQuit.Stop();
+
             PopupManager.Instance.PlayTo(PopupState.Home);
         }
     }

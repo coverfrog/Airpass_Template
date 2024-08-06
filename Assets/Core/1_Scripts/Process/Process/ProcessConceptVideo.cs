@@ -80,7 +80,14 @@ namespace CoverFrog
         protected override IEnumerator CoPlay(params object[] values)
         {
             Player.Play();
-            yield return null;
+            
+            yield return new WaitWhile(() => Player.isPlaying);
+            
+            _isEnter = true;
+            
+            Pause();
+            
+            ProcessManager.Instance.ToState(ProcessState.Narration);
         }
 
         public override void Pause()

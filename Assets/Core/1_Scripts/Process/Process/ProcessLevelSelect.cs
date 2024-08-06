@@ -39,9 +39,13 @@ namespace CoverFrog
         
         #endregion
 
+        [Header("[ Level Select ]")]
         [SerializeField] private Image previewImg;
         [SerializeField] private RawImage rawImage;
         [SerializeField] private VideoPlayer videoPlayer;
+        [Space] 
+        [SerializeField] private GameAutoQuit gameAutoQuit;
+        [SerializeField] private GameLure gameLure;
         
         //
         
@@ -71,12 +75,18 @@ namespace CoverFrog
         public override void Pause()
         {
             base.Pause();
+            
+            videoPlayer.Pause();
+            
             AudioManager.Instance.Pause(AudioType.Narration);
         }
 
         public override void UnPause()
         {
             base.UnPause();
+            
+            videoPlayer.Play();
+
             AudioManager.Instance.UnPause(AudioType.Narration);
         }
 
@@ -150,6 +160,8 @@ namespace CoverFrog
                 return;
 
             _isEnter = true;
+
+            gameAutoQuit.Stop();
             
             Helpers.ForEach(h => h.SetInteract(true));
             

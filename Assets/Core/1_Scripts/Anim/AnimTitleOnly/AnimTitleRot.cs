@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CoverFrog
+namespace CoverFrog.Title
 {
     public class AnimTitleRot : Anim
     {

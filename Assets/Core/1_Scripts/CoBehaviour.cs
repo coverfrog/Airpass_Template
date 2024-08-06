@@ -25,6 +25,8 @@ namespace CoverFrog
         }
 
         public bool ActiveInHierarchy => gameObject.activeInHierarchy;
+
+        public bool IsPlaying => _coPlay != null;
         
         // ReSharper disable Unity.PerformanceAnalysis
         public virtual void Play(params object[] values)
@@ -56,7 +58,7 @@ namespace CoverFrog
 
         public virtual void UnPause()
         {
-            if(_coPlay != null) StartCoroutine(_coPlay);
+            if(_coPlay != null && gameObject.activeInHierarchy) StartCoroutine(_coPlay);
         }
 
         public virtual void Completed()

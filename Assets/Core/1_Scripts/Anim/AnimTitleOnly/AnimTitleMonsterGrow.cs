@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace CoverFrog
+namespace CoverFrog.Title
 {
     public class AnimTitleMonsterGrow : Anim
     {

@@ -58,9 +58,10 @@ namespace CoverFrog
         [Header("# --- Concept Video --- #")]
         [SerializeField] public Sprite conceptVideoSprite;
         [SerializeField] public VideoClip conceptVideo;
-        [Space] 
-        
-        [Header("# --- Narration --- #")] 
+
+        [Space] [Header("# --- Narration --- #")] 
+        [SerializeField] public Sprite narrationPreviewSprite;
+        [SerializeField] public VideoClip narrationVideoClip;
         [SerializeField] private List<ProcessNarrationData> narrationDatas;
         
         public IReadOnlyList<ProcessNarrationData> NarrationAudioNames
@@ -273,7 +274,9 @@ namespace CoverFrog
                 
                 narration.Init(
                     narrationData.descriptionText,
-                    narrationData.fontSize);
+                    narrationData.fontSize,
+                    processData.narrationPreviewSprite,
+                    processData.narrationVideoClip);
                 
             }, () =>
             {

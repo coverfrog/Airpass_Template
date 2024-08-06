@@ -263,6 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1267617690830463931}
   - component: {fileID: 1267617690830463930}
+  - component: {fileID: 6410830877943486492}
   m_Layer: 5
   m_Name: Result
   m_TagString: Untagged
@@ -316,6 +317,24 @@ MonoBehaviour:
   btnFade: {fileID: 656574707}
   quitHelper: {fileID: 6941445743995914258}
   retryHelper: {fileID: 1768354254491393685}
+  gameAutoQuit: {fileID: 6410830877943486492}
+--- !u!114 &6410830877943486492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267617690830463928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e7f89b4b92d6e4b8bc791bfa2e07d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playWhenEnable: 1
+  activeOffWhenStop: 0
+  activeOffWhenComplete: 0
+  quitWait: 120
+  current: 0
 --- !u!1 &1282841011599016947
 GameObject:
   m_ObjectHideFlags: 0

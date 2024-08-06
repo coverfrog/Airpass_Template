@@ -16,6 +16,9 @@ namespace CoverFrog
         [SerializeField] private HelperResult quitHelper;
         [SerializeField] private HelperResult retryHelper;
 
+        [Header("[ PopupResult _ ]")] 
+        [SerializeField] private GameAutoQuit gameAutoQuit;
+
         private void Awake()
         {
             quitHelper.AddAction(OnClick_Quit, quitHelper);
@@ -37,7 +40,11 @@ namespace CoverFrog
             scoreText.text = string.Format(valueFormat, value);
             scoreText.fontSize = txtSize;
 
-            yield return new WaitForSeconds(btnFade.Duration);
+            
+            quitHelper.SetInteract(false);
+            retryHelper.SetInteract(false);
+            
+            yield return new WaitForSeconds(btnFade.Delay + btnFade.Duration);
             
             quitHelper.SetInteract(true);
             retryHelper.SetInteract(true);
@@ -45,11 +52,15 @@ namespace CoverFrog
 
         private void OnClick_Quit(Helper helper)
         {
+            gameAutoQuit.Stop();
+            
             ProcessManager.Instance.OnQuit();
         }
         
         private void OnClick_Retry(Helper helper)
         {
+            gameAutoQuit.Stop();
+
             ProcessManager.Instance.ToState(ProcessState.LevelSelect);
         }
     }

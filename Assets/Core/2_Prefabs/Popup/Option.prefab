@@ -284,13 +284,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2882479396745636838}
   - component: {fileID: 2882479396745636761}
+  - component: {fileID: 8623970272023528316}
   m_Layer: 5
   m_Name: Option
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2882479396745636838
 RectTransform:
   m_ObjectHideFlags: 0
@@ -337,6 +338,7 @@ MonoBehaviour:
   offData:
     sprite: {fileID: 21300000, guid: 6a2ac2e81c959e24bad2092d9e8ea92c, type: 3}
     txtColor: {r: 0.5764706, g: 0.57254905, b: 0.54901963, a: 1}
+  gameAutoQuit: {fileID: 8623970272023528316}
   optionGroups:
   - optionName: 0
     onHelper: {fileID: 8319903006117979816}
@@ -347,6 +349,23 @@ MonoBehaviour:
   - optionName: 2
     onHelper: {fileID: 8751962006116942733}
     offHelper: {fileID: 169383169800744794}
+--- !u!114 &8623970272023528316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882479396745636839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e7f89b4b92d6e4b8bc791bfa2e07d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playWhenEnable: 1
+  activeOffWhenStop: 0
+  activeOffWhenComplete: 0
+  quitWait: 120
+  current: 0
 --- !u!1 &4839236163890772839
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,6 +62,7 @@ namespace CoverFrog
         public void PopupOpenCountUp(Popup popup)
         {
             _popupOpenCount++;
+
             OnCountUp?.Invoke();
         }
 
@@ -105,22 +106,22 @@ namespace CoverFrog
 
         private void PlayHome(PopupHome home)
         {
-            Popups[PopupState.Option].SetActive(false);
-            
             if(home.ActiveInHierarchy)
                 home.SetActive(false);
             else
                 home.Play();
+            
+            Popups[PopupState.Option].SetActive(false);
         }
 
         private void PlayOption(PopupOption option)
         {
-            Popups[PopupState.Home].SetActive(false);
-            
             if(option.ActiveInHierarchy)
                 option.SetActive(false);
             else
                 option.Play();
+            
+            Popups[PopupState.Home].SetActive(false);
         }
     }
 }

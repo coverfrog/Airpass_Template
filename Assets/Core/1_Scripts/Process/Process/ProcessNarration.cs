@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace CoverFrog
 {
@@ -20,6 +21,11 @@ namespace CoverFrog
 
     public class ProcessNarration : Process
     {
+        [Header("[ Narration ]")]
+        [SerializeField] private Image previewImg;
+        [SerializeField] private RawImage rawImage;
+        [SerializeField] private VideoPlayer videoPlayer;
+        
         private Text _narrationText;
 
         private Text NarrationText =>
@@ -46,12 +52,18 @@ namespace CoverFrog
         public override void Pause()
         {
             base.Pause();
+            
+            videoPlayer.Pause();
+            
             AudioManager.Instance.Pause(AudioType.Narration);
         }
 
         public override void UnPause()
         {
             base.UnPause();
+            
+            videoPlayer.Play();
+            
             AudioManager.Instance.UnPause(AudioType.Narration);
         }
 
@@ -67,12 +79,27 @@ namespace CoverFrog
             NarrationText.fontSize =
                 (int)values[1];
             
-            // _
+            // _[2] [3]
+            // [3] [4] sprite, video
+            var renderTex 
+                = new RenderTexture(320, 330, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+
+            rawImage.texture
+                = renderTex;
+            
+            previewImg.sprite = (Sprite)values[2];
+            
+            videoPlayer.targetTexture = renderTex;
+            videoPlayer.clip = (VideoClip)values[3];
+            videoPlayer.frame = 1;
+
             gameObject.SetActive(true);
         }
 
         protected override IEnumerator CoPlay(params object[] values)
         {
+            videoPlayer.Play();
+            
             // [0] NarrationAudioName            
             var narrationAudioName = (AudioName)values[0];
             var audioInstance = AudioManager.Instance;

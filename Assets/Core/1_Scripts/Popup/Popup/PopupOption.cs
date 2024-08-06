@@ -19,17 +19,21 @@ namespace CoverFrog
         [SerializeField] private OptionName optionName;
         [SerializeField] private HelperOption onHelper;
         [SerializeField] private HelperOption offHelper;
-
+        [Space]
+        
         private OptionData _onData, _offData;
         
         public OptionName Name => optionName;
 
         public bool CurrentValue { get; private set; } = true;
 
-        public void Init(OptionData onData, OptionData offData)
+        private GameAutoQuit _gameAutoQuit;
+        
+        public void Init(OptionData onData, OptionData offData, GameAutoQuit gameAutoQuit)
         {
             _onData = onData;
             _offData = offData;
+            _gameAutoQuit = gameAutoQuit;
             
             onHelper.AddAction(OnClick_On, onHelper);
             offHelper.AddAction(OnClick_Off, offHelper);
@@ -46,6 +50,8 @@ namespace CoverFrog
             offHelper.Set(_offData);
             
             AudioManager.Instance.SetVolume(optionName, 1.0f);
+            
+            _gameAutoQuit?.Init();
         }
 
         private void OnClick_Off(Helper helper)
@@ -59,6 +65,8 @@ namespace CoverFrog
             offHelper.Set(_onData);
             
             AudioManager.Instance.SetVolume(optionName, 0.0f);
+            
+            _gameAutoQuit?.Init();
         }
     }
 
@@ -76,11 +84,12 @@ namespace CoverFrog
         [SerializeField] private OptionData offData;
 
         [Header("[ PopupOption - Group ]")] 
+        [SerializeField] private GameAutoQuit gameAutoQuit;
         [SerializeField] private List<OptionGroup> optionGroups;
         
         private void Awake()
         {
-            optionGroups.ForEach(og => og.Init(onData, offData));
+            optionGroups.ForEach(og => og.Init(onData, offData, gameAutoQuit));
         }
 
         public override void Init(params object[] values)

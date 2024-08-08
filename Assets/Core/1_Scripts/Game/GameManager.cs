@@ -8,7 +8,9 @@ namespace CoverFrog
     {
         
         public abstract void Init();
-        
+
+
+
         public abstract void Play(int selectLevel);
 
         private IEnumerator _coCompleted;

@@ -26,7 +26,7 @@ namespace CoverFrog
         {
             base.Completed();
 
-            ProcessManager.Instance.ToState(ProcessState.LevelSelect);
+            ProcessManager.Instance.ToState(ProcessState.ConceptVideo);
         }
     }
 }

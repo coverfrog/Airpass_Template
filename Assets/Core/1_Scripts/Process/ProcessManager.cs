@@ -222,6 +222,22 @@ namespace CoverFrog
 
             title.Play(processData.titleWaitDuration);
         }
+        
+        private void ToConceptVideo(ProcessConceptVideo conceptVideo, ProcessFade fade)
+        {
+            fade.BeTweenPlayWithCallback(() =>
+            {
+                Processes[ProcessState.LevelSelect].SetActive(false);
+                
+                conceptVideo.Init(
+                    processData.conceptVideoSprite, 
+                    processData.conceptVideo);
+                
+            }, () =>
+            {
+                conceptVideo.Play();
+            });
+        }
 
         private void ToLevelSelect(ProcessLevelSelect levelSelect, ProcessFade fade)
         {
@@ -229,6 +245,7 @@ namespace CoverFrog
             {
                 PopupIns.ActiveAll(false);
 
+                Processes[ProcessState.ConceptVideo].SetActive(false);
                 Processes[ProcessState.Title].SetActive(false);
                 Processes[ProcessState.Result].SetActive(false);
                 Processes[ProcessState.GamePlay].Init(
@@ -248,40 +265,41 @@ namespace CoverFrog
             });
         }
 
-        private void ToConceptVideo(ProcessConceptVideo conceptVideo, ProcessFade fade)
-        {
-            fade.BeTweenPlayWithCallback(() =>
-            {
-                Processes[ProcessState.LevelSelect].SetActive(false);
-                
-                conceptVideo.Init(
-                    processData.conceptVideoSprite, 
-                    processData.conceptVideo);
-                
-            }, () =>
-            {
-                conceptVideo.Play();
-            });
-        }
+      
 
         private void ToNarration(ProcessNarration narration, ProcessFade fade)
         {
             var narrationData = processData.NarrationAudioNames[selectedLevel];
             
-            fade.BeTweenPlayWithCallback(() =>
-            {
-                Processes[ProcessState.ConceptVideo].SetActive(false);
+            Processes[ProcessState.Title].SetActive(false);
+            Processes[ProcessState.LevelSelect].SetActive(false);
+            Processes[ProcessState.GamePlay].Init(
+                processData.gamePlayDuration,
+                processData.gamePlayIsAlwaysGameWin);
                 
-                narration.Init(
-                    narrationData.descriptionText,
-                    narrationData.fontSize,
-                    processData.narrationPreviewSprite,
-                    processData.narrationVideoClip);
                 
-            }, () =>
-            {
-                narration.Play(narrationData.audioName);
-            });
+            narration.Init(
+                narrationData.descriptionText,
+                narrationData.fontSize,
+                processData.narrationPreviewSprite,
+                processData.narrationVideoClip);
+            
+            narration.Play(narrationData.audioName);
+            
+            // fade.BeTweenPlayWithCallback(() =>
+            // {
+            //     Processes[ProcessState.ConceptVideo].SetActive(false);
+            //     
+            //     narration.Init(
+            //         narrationData.descriptionText,
+            //         narrationData.fontSize,
+            //         processData.narrationPreviewSprite,
+            //         processData.narrationVideoClip);
+            //     
+            // }, () =>
+            // {
+            //     narration.Play(narrationData.audioName);
+            // });
         }
 
         private void ToGamePlay(ProcessGamePlay gamePlay)

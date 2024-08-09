@@ -168,9 +168,8 @@ namespace CoverFrog
             var selectLevel = levelSelect.Level;
             
             AudioManager.Instance.Stop(AudioType.Narration);
-            
             ProcessManager.Instance.OnLevelSelected(selectLevel);
-            ProcessManager.Instance.ToState(ProcessState.ConceptVideo);
+            ProcessManager.Instance.ToState(ProcessState.Narration);
         }
     }
 }

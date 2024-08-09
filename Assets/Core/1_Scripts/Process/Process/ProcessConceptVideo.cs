@@ -87,7 +87,7 @@ namespace CoverFrog
             
             Pause();
             
-            ProcessManager.Instance.ToState(ProcessState.Narration);
+            ProcessManager.Instance.ToState(ProcessState.LevelSelect);
         }
 
         public override void Pause()
@@ -108,7 +108,7 @@ namespace CoverFrog
             
             Pause();
             
-            ProcessManager.Instance.ToState(ProcessState.Narration);
+            ProcessManager.Instance.ToState(ProcessState.LevelSelect);
         }
     }
 }

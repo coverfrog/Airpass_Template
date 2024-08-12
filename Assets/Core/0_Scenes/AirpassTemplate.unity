@@ -861,7 +861,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &1929150669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,8 +1241,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1655590999126418546, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
+--- !u!1 &1267617689649519830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6148965230741297195, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
+  m_PrefabInstance: {fileID: 1267617689649519829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1267617689649519831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267617689649519830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd4903e160383d478a5c45f37858dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playWhenEnable: 1
+  activeOffWhenStop: 0
+  activeOffWhenComplete: 0
+  setStartAlphaBeforeDelay: 0
+  delay: 1.25
+  duration: 0.25
+  startAlpha: 0
+  endAlpha: 1
+--- !u!225 &1267617689649519832
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267617689649519830}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1267617689649519833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267617689649519830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262b79386f187db49a9f5a3c440b10f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playWhenEnable: 1
+  activeOffWhenStop: 0
+  activeOffWhenComplete: 0
+  delay: 1.25
+  duration: 0.25
+  startScale: 8
+  endScale: 1
 --- !u!1001 &1373971999358251322
 PrefabInstance:
   m_ObjectHideFlags: 0

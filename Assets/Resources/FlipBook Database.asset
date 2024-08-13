@@ -17,57 +17,9 @@ MonoBehaviour:
   writeEnumName: AnimFlipBookName
   flipBookDataList:
   - name: 0
-    codeName: Bum9DustAirRefresh
-    spriteArr:
-    - {fileID: 21300000, guid: f045bde848a50424191ac3f15292292f, type: 3}
-    - {fileID: 21300000, guid: e10f0975a0ccda94b9b0665a5449993a, type: 3}
-    - {fileID: 21300000, guid: 5ef8eb4d4d54a6f4d89f0acb9c3c79f6, type: 3}
-    - {fileID: 21300000, guid: 228fab068e7d6d247b597787f1c93fc1, type: 3}
-    - {fileID: 21300000, guid: 7bb9211c644f9464faa6c9f02c6e50be, type: 3}
-    - {fileID: 21300000, guid: 7210a78ae8635d1409c4b404eb1d5823, type: 3}
-    - {fileID: 21300000, guid: 14507418a712d7b489e0b7ead4f66590, type: 3}
-    - {fileID: 21300000, guid: 5f87cf30e0bfa55489e5e89a97d698e2, type: 3}
-    - {fileID: 21300000, guid: cb3e0307422932046b90d0cfde790b3a, type: 3}
-    - {fileID: 21300000, guid: 507522bed409c014a9e2102be466fa14, type: 3}
-    - {fileID: 21300000, guid: f11a87cfe16925f4682e934625d8a0ae, type: 3}
-    - {fileID: 21300000, guid: 2fd4483a668ac7544820b88e3ed1e448, type: 3}
-    - {fileID: 21300000, guid: 851c9634afd583740babc9a0731e4ec5, type: 3}
-    - {fileID: 21300000, guid: c422b3188ace32d45ae8b194c1b08304, type: 3}
-    - {fileID: 21300000, guid: b3899e96e877f5647922af0624b5fd5d, type: 3}
-    - {fileID: 21300000, guid: 451aa9bbbf5c16343ada87e74e87d720, type: 3}
-    - {fileID: 21300000, guid: b78eb0c5ea9b4d5418b723f8a2624960, type: 3}
-    - {fileID: 21300000, guid: b32b854e97331fc40997c2c1f812b33a, type: 3}
-    - {fileID: 21300000, guid: 1313aeb36afba274f81ca3d5c7334ac1, type: 3}
-    - {fileID: 21300000, guid: a0444276f3d6d31429ae763de5bb2d06, type: 3}
-    - {fileID: 21300000, guid: dfe7bf3c2a773ec4cb037e08c5e01393, type: 3}
-    - {fileID: 21300000, guid: 686803c9b10e90e4a8c08d24316acd7a, type: 3}
-    - {fileID: 21300000, guid: d4aa04929bc3638478e81e6f0d235784, type: 3}
-    - {fileID: 21300000, guid: 32a3625c16f99d746bfe90ab544cb378, type: 3}
-    - {fileID: 21300000, guid: 2b26727a59453ac4da275c3c1d9586e2, type: 3}
-    - {fileID: 21300000, guid: 793ca10faf9023745a043fb0d192577e, type: 3}
-    - {fileID: 21300000, guid: 65ccd53ac4d97c840af263b3fbef1030, type: 3}
-    - {fileID: 21300000, guid: 0e9dd04d459c2774bac13bbfb6a66901, type: 3}
-    - {fileID: 21300000, guid: 1b53a7715b9e366489d65f2a2e41c8d3, type: 3}
-    - {fileID: 21300000, guid: f2e17caf6f795fa4aa6111542eecf893, type: 3}
-    - {fileID: 21300000, guid: 2ff003e43fe1d3444903a5faaff55be4, type: 3}
-    - {fileID: 21300000, guid: d75f624bef79b8d4fb5419cf169b44d3, type: 3}
-    - {fileID: 21300000, guid: 1f07e3c3f7e487640ba7a5f79821990f, type: 3}
-    - {fileID: 21300000, guid: 0ee1c18052edb4d45876c3c19d87fb25, type: 3}
-    - {fileID: 21300000, guid: 934a3876f45e086469a307a92b877556, type: 3}
-    - {fileID: 21300000, guid: 52fd034ff19f18740a815f346ea5b144, type: 3}
-    - {fileID: 21300000, guid: d481df924741ddc46964a09091b90df1, type: 3}
-    - {fileID: 21300000, guid: 701c81226f85e46478be6cf80e79ca94, type: 3}
-    - {fileID: 21300000, guid: 0bb8d40d73b264e48b1c8bc5ed5a7727, type: 3}
-    - {fileID: 21300000, guid: 70fdd37fd48fa8248a8aeb68772779f4, type: 3}
-    - {fileID: 21300000, guid: 15b30fe8645e3ad41a2f43f212c21639, type: 3}
-    - {fileID: 21300000, guid: ed4f251600a7e5b40870d370618dfa03, type: 3}
-    - {fileID: 21300000, guid: 9717673762b99004eafb94bb6fbcdfb6, type: 3}
-    - {fileID: 21300000, guid: 3f5390024fe6e584a9a84d98a807e72a, type: 3}
-    - {fileID: 21300000, guid: dd6161910dbc1114fbab7e175b2e7842, type: 3}
-  - name: 1
     codeName: Bum9DustMonster
     spriteArr: []
-  - name: 2
+  - name: 1
     codeName: Bum9DustTitleGlow
     spriteArr:
     - {fileID: 21300000, guid: 702ce31f5a1519c4abd85b481b1bb647, type: 3}
@@ -100,7 +52,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5b1b426ca5a74594ab1eddfd4e2da330, type: 3}
     - {fileID: 21300000, guid: 9fed67c7de6513b4abb7ed5114778950, type: 3}
     - {fileID: 21300000, guid: f4efa445b121fa7468a92b300df930e8, type: 3}
-  - name: 3
+  - name: 2
     codeName: SuccessBg
     spriteArr:
     - {fileID: 21300000, guid: b4576f449b724254f9d32d0167fc8707, type: 3}
@@ -193,7 +145,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 3ba8dd5e9773b85419c129349d380874, type: 3}
     - {fileID: 21300000, guid: 10e73aa24b30f5b43868f7ee0268b8a7, type: 3}
     - {fileID: 21300000, guid: 490e1ea4337ac8448a4380948a3a4442, type: 3}
-  - name: 4
+  - name: 3
     codeName: SuccessStamp
     spriteArr:
     - {fileID: 21300000, guid: 95325266e43d0b545bdab71febdff1e3, type: 3}

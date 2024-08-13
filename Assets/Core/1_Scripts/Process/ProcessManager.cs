@@ -273,9 +273,9 @@ namespace CoverFrog
             
             Processes[ProcessState.Title].SetActive(false);
             Processes[ProcessState.LevelSelect].SetActive(false);
-            Processes[ProcessState.GamePlay].Init(
-                processData.gamePlayDuration,
-                processData.gamePlayIsAlwaysGameWin);
+            //Processes[ProcessState.GamePlay].Init(
+            //    processData.gamePlayDuration,
+            //    processData.gamePlayIsAlwaysGameWin);
                 
                 
             narration.Init(

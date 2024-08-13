@@ -99,11 +99,11 @@ namespace CoverFrog
             // _
             while (gamePlayTimer > 0.0f)
             {
-                if (_isTimerReduce)
-                {
-                    gamePlayTimer 
-                        = Mathf.Clamp(gamePlayTimer - Time.deltaTime, 0.0f, _gamePlayDuration);
-                }
+                //if (_isTimerReduce)
+                //{
+                //    gamePlayTimer 
+                //        = Mathf.Clamp(gamePlayTimer - Time.deltaTime, 0.0f, _gamePlayDuration);
+                //}
 
                 yield return null;
             }

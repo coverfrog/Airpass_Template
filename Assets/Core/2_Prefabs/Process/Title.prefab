@@ -1129,7 +1129,7 @@ MonoBehaviour:
   isLoop: 1
   duration: 2
   delay: 1
-  flipBookName: 2
+  flipBookName: 1
 --- !u!1 &4943742331415561116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,7 +1722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6693076388904954512
 RectTransform:
   m_ObjectHideFlags: 0

@@ -9,18 +9,17 @@ namespace Bum9Dust
     {
         public override void Init()
         {
-            
+            Debug.Log("Init");
         }
 
         public override void Play(int selectLevel)
         {
-            
+            Debug.Log("Play");
         }
 
         protected override IEnumerator CoCompleted(bool isWin)
         {
-            yield return null;
-            
+            yield return null;            
             ProcessManager.Instance.ToState(ProcessState.Result);
         }
     }

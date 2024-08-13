@@ -7,10 +7,32 @@ namespace CoverFrog
 {
     public class ProcessTitle : Process
     {
+
+        enum titleTyp 
+        {
+            Subject = 0,
+            Math
+        }
+
+        [SerializeField] titleTyp TitleType = titleTyp.Subject;
+
         public override void Init(params object[] values)
         {
-            
+            // ????
         }
+
+        public override void Play(params object[] values)
+        {
+            base.Play(values);
+
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            transform.GetChild((int)TitleType).gameObject.SetActive(true);
+        }
+
 
         protected override IEnumerator CoPlay(params object[] values)
         {

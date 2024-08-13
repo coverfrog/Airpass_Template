@@ -18,19 +18,20 @@ namespace CoverFrog
 
         public override void Init(params object[] values)
         {
-            // ????
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
 
         public override void Play(params object[] values)
         {
             base.Play(values);
 
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                transform.GetChild(i).gameObject.SetActive(false);
-            }
+
 
             transform.GetChild((int)TitleType).gameObject.SetActive(true);
+
         }
 
 
@@ -47,6 +48,9 @@ namespace CoverFrog
         public override void Completed()
         {
             base.Completed();
+
+            if (TitleType == titleTyp.Math)
+                transform.GetChild((int)TitleType).GetChild(0).GetChild(2).GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
 
             ProcessManager.Instance.ToState(ProcessState.ConceptVideo);
         }

@@ -219,7 +219,7 @@ namespace CoverFrog
         private void ToTitle(ProcessTitle title)
         {
             PopupIns.ToTitle();
-
+            title.Init();
             title.Play(processData.titleWaitDuration);
         }
         

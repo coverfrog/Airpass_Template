@@ -117,7 +117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1676, y: -30}
+  m_AnchoredPosition: {x: 1788, y: -30}
   m_SizeDelta: {x: 102, y: 105}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4119805346511258043
@@ -432,9 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf00457d22a869f4e8a295dea057aad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenEnable: 0
-  activeOffWhenStop: 0
-  activeOffWhenComplete: 0
   homeHelper: {fileID: 3464119351755588499}
   optionHelper: {fileID: 2250126088034754818}
 --- !u!1 &8120789343353848634
@@ -554,7 +551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1798, y: -30}
+  m_AnchoredPosition: {x: 1788, y: -155}
   m_SizeDelta: {x: 102, y: 105}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &9097449714681091425

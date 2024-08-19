@@ -1499,6 +1499,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6460524764068098896, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
 --- !u!1 &158996689450402449
@@ -1963,6 +1967,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f8805d4bdc6ac304f91222ecfa65a257, type: 3}
+    - target: {fileID: 804229498541976000, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
+      propertyPath: flipBookName
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1267617690830463928, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
       propertyPath: m_Name
       value: Result
@@ -2126,7 +2134,7 @@ MonoBehaviour:
   playWhenEnable: 1
   activeOffWhenStop: 0
   activeOffWhenComplete: 0
-  setStartAlphaBeforeDelay: 0
+  setStartAlphaBeforeDelay: 1
   delay: 1.25
   duration: 0.25
   startAlpha: 0

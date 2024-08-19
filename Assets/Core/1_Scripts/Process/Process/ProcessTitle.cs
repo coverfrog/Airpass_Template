@@ -27,11 +27,7 @@ namespace CoverFrog
         public override void Play(params object[] values)
         {
             base.Play(values);
-
-
-
             transform.GetChild((int)TitleType).gameObject.SetActive(true);
-
         }
 
 

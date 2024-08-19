@@ -17,42 +17,6 @@ MonoBehaviour:
   writeEnumName: AnimFlipBookName
   flipBookDataList:
   - name: 0
-    codeName: Bum9DustMonster
-    spriteArr: []
-  - name: 1
-    codeName: Bum9DustTitleGlow
-    spriteArr:
-    - {fileID: 21300000, guid: 702ce31f5a1519c4abd85b481b1bb647, type: 3}
-    - {fileID: 21300000, guid: fb62916d28173064c92ab163a9178012, type: 3}
-    - {fileID: 21300000, guid: 1c82e31841b4f3044975d3fe1680672a, type: 3}
-    - {fileID: 21300000, guid: 1c52afaf020e64a4fbd69f26a110e345, type: 3}
-    - {fileID: 21300000, guid: f0e796339f967ff43bc15a0b452a1d29, type: 3}
-    - {fileID: 21300000, guid: 90ce18165e819cf45b607df5c1e9c2de, type: 3}
-    - {fileID: 21300000, guid: c0de7404b3f91a742927c72524877c95, type: 3}
-    - {fileID: 21300000, guid: fd3a9dee78d3bd8479bace3fa8b8e6cb, type: 3}
-    - {fileID: 21300000, guid: eb0881348658fc34ea973f66a37afbf2, type: 3}
-    - {fileID: 21300000, guid: a62656a88ad5b5c49ba282200db88c24, type: 3}
-    - {fileID: 21300000, guid: 45aef8994d8e7474a9db4fef79eaff1f, type: 3}
-    - {fileID: 21300000, guid: 0eed4c16d292e114cb3979e0250b7529, type: 3}
-    - {fileID: 21300000, guid: 1c4d240ffc034b041b200f4aa5b934e7, type: 3}
-    - {fileID: 21300000, guid: 7527acfc1bfcbd84489c616f51a34010, type: 3}
-    - {fileID: 21300000, guid: 3c23e5336e0594940a0834692feb0911, type: 3}
-    - {fileID: 21300000, guid: faaa66fa91b29944f9546451abbfea5e, type: 3}
-    - {fileID: 21300000, guid: 0b8ced381195f3144a8ca54af36f752c, type: 3}
-    - {fileID: 21300000, guid: d31271d7b95978d41842848574b242bf, type: 3}
-    - {fileID: 21300000, guid: 265e9d407c8c28e4fb31f65b8bd6824b, type: 3}
-    - {fileID: 21300000, guid: 6bfe198ac1333d1489998346ed474b29, type: 3}
-    - {fileID: 21300000, guid: 3b7be5e615d5fe64e8f0af0a660a6aac, type: 3}
-    - {fileID: 21300000, guid: 9853e1acf52fbd94ba2830b812b18344, type: 3}
-    - {fileID: 21300000, guid: 279269d48260aaf4ba833b67cde71e5d, type: 3}
-    - {fileID: 21300000, guid: 15871831ccf889649ab6ba798d34d708, type: 3}
-    - {fileID: 21300000, guid: 0e2c0f0e957c58c4f9253161d5cfd474, type: 3}
-    - {fileID: 21300000, guid: 0725a7416044a6a4badd7311f1fa78aa, type: 3}
-    - {fileID: 21300000, guid: dcd812414f4ad6d45973c13796460907, type: 3}
-    - {fileID: 21300000, guid: 5b1b426ca5a74594ab1eddfd4e2da330, type: 3}
-    - {fileID: 21300000, guid: 9fed67c7de6513b4abb7ed5114778950, type: 3}
-    - {fileID: 21300000, guid: f4efa445b121fa7468a92b300df930e8, type: 3}
-  - name: 2
     codeName: SuccessBg
     spriteArr:
     - {fileID: 21300000, guid: b4576f449b724254f9d32d0167fc8707, type: 3}
@@ -145,7 +109,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 3ba8dd5e9773b85419c129349d380874, type: 3}
     - {fileID: 21300000, guid: 10e73aa24b30f5b43868f7ee0268b8a7, type: 3}
     - {fileID: 21300000, guid: 490e1ea4337ac8448a4380948a3a4442, type: 3}
-  - name: 3
+  - name: 1
     codeName: SuccessStamp
     spriteArr:
     - {fileID: 21300000, guid: 95325266e43d0b545bdab71febdff1e3, type: 3}

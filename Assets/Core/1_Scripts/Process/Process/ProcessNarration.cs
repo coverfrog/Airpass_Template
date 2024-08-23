@@ -114,7 +114,7 @@ namespace CoverFrog
             // complete
             ProcessManager.Instance.ToState(ProcessState.GamePlay);
 
-            VRSportsButton.interacting = null;
+             VRSportsButton.interacting = null;
 
         }
     }

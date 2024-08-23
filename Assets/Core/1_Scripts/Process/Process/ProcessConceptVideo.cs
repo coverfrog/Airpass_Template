@@ -80,8 +80,13 @@ namespace CoverFrog
         protected override IEnumerator CoPlay(params object[] values)
         {
             Player.Play();
-            
-            yield return new WaitWhile(() => Player.isPlaying);
+
+            var clipLength = Player.clip.length;
+
+            for (float t = 0.0f; t < clipLength - 1.0f; t += Time.deltaTime)
+            {
+                yield return null;
+            }
             
             _isEnter = true;
             
@@ -93,6 +98,7 @@ namespace CoverFrog
         public override void Pause()
         {
             Player.Pause();
+            
             base.Pause();
         }
 

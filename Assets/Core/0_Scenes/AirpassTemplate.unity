@@ -784,7 +784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ed36dfbc05a2c6341b4414d970fcf6a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 892722bda9a7cd348985ba122682e0db, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1977,7 +1977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1267617690830463928, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1267617690830463931, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
       propertyPath: m_Pivot.x
@@ -2083,10 +2083,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5118917164862554955, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 315
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118917164862554955, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 315
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118917164862554955, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1329
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118917164862554955, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -242
+      objectReference: {fileID: 0}
     - target: {fileID: 6410830877943486492, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
       propertyPath: playWhenEnable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6496686851866664016, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c13a9be7abac4b47a43abcd3abe9d40, type: 3}
     - target: {fileID: 6496686851866664016, guid: 1a45824997de3f84b8aa9af49f885d5a, type: 3}
       propertyPath: m_RaycastTarget
       value: 0

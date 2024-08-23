@@ -109,6 +109,7 @@ namespace CoverFrog
             Pause();
             
             ProcessManager.Instance.ToState(ProcessState.LevelSelect);
+
         }
     }
 }

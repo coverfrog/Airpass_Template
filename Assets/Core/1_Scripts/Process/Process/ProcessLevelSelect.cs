@@ -131,7 +131,7 @@ namespace CoverFrog
             videoPlayer.frame = 1;
             
             // _
-            gameObject.SetActive(true);
+            // gameObject.SetActive(true);
         }
 
         protected override IEnumerator CoPlay(params object[] values)

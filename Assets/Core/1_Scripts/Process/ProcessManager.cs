@@ -88,6 +88,8 @@ namespace CoverFrog
         [SerializeField] private ProcessData processData;
 
         private object _resultValue;
+
+        public ProcessState Current => currentState;
         
         #region > Processes
         private Dictionary<ProcessState, Process> _processes;

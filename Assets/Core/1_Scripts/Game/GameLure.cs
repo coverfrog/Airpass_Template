@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using AirpassUnity.VRSports;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace CoverFrog
@@ -31,12 +32,22 @@ namespace CoverFrog
 
                 button.OnHolding.AddListener(() =>
                 {
+                    if (ProcessManager.Instance.Current != ProcessState.LevelSelect)
+                    {
+                        return;
+                    }
+
                     Stop();
                     _animLures.ForEach(x => x.Stop());
                 });
                 
                 button.OnHoldLost.AddListener(() =>
                 {
+                    if (ProcessManager.Instance.Current != ProcessState.LevelSelect)
+                    {
+                        return;
+                    }
+                    
                     Init();
                     Stop();
                     Play();
@@ -44,6 +55,11 @@ namespace CoverFrog
                 
                 button.UnityBtn?.onClick.AddListener(() =>
                 {
+                    if (ProcessManager.Instance.Current != ProcessState.LevelSelect)
+                    {
+                        return;
+                    }
+                    
                     Init();
                     Stop();
                     _animLures.ForEach(x => x.ToDefault());

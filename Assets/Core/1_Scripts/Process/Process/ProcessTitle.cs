@@ -48,9 +48,9 @@ namespace CoverFrog
             if (TitleType == titleTyp.Math)
                 transform.GetChild((int)TitleType).GetChild(0).GetChild(2).GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
 
-            //ProcessManager.Instance.ToState(ProcessState.ConceptVideo);
+            ProcessManager.Instance.ToState(ProcessState.ConceptVideo);
 
-            ProcessManager.Instance.ToState(ProcessState.LevelSelect);
+            // ProcessManager.Instance.ToState(ProcessState.LevelSelect);
         }
     }
 }

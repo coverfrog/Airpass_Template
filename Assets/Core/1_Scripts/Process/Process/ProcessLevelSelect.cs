@@ -94,6 +94,7 @@ namespace CoverFrog
         
         public override void Init(params object[] values)
         {
+            gameObject.SetActive(true);
             // [0] level max count
             var levelMaxCount = (int)values[0];
             

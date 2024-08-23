@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using AirpassUnity.VRSports;
 
 namespace CoverFrog
 {
@@ -112,6 +113,9 @@ namespace CoverFrog
             
             // complete
             ProcessManager.Instance.ToState(ProcessState.GamePlay);
+
+            VRSportsButton.interacting = null;
+
         }
     }
 }

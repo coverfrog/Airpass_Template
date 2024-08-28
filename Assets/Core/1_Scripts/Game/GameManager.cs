@@ -22,7 +22,6 @@ namespace CoverFrog
             while (_GameTime < GameMaxSecond)
             {
                 _GameTime += 1;
-                Debug.Log(_GameTime);
                 yield return new WaitForSecondsRealtime(1.0f);
                 yield return null;
             }
@@ -48,24 +47,23 @@ namespace CoverFrog
             Init();
             _GameTime = 0;
             Time.timeScale = 1;
-            //
-            // 인게임 초기화
-            //
+            StopAllCoroutines();
             ProcessManager.Instance.ToState(ProcessState.LevelSelect);
-            yield return new WaitForSecondsRealtime(0.25f);
             _back_Select_rect.gameObject.SetActive(false);
+            yield return null;
+
+            
         }
         IEnumerator _Back_select_Activity_btn_evt()
         {
             Init();
             _GameTime = 0;
             Time.timeScale = 1;
-            //
-            // 인게임 초기화
-            //
+            StopAllCoroutines();
             ProcessManager.Instance.ToState(ProcessState.Narration);
-            yield return new WaitForSecondsRealtime(0.25f);
             _back_Select_rect.gameObject.SetActive(false);
+            yield return null;
+            
         }
         public virtual void Init() 
         {
@@ -107,5 +105,34 @@ namespace CoverFrog
             _coCompleted = CoCompleted(isWin);
             StartCoroutine(_coCompleted);
         }
+
+#if UNITY_EDITOR
+
+
+        
+        private void OnGUI()
+        {
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 50;
+            style.normal.textColor = Color.red;
+
+            GUI.Label(new Rect(5, 5, Screen.width, 20), "GameTime(s) : " + _GameTime, style);           
+        }
+#endif
+        protected void Update()
+        {
+            if (Input.anyKey)
+            {
+                _GameTime = 0;
+            }
+
+
+
+
+        }
+
+
+
+
     }
 }

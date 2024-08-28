@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 namespace CoverFrog
 {
@@ -86,7 +88,33 @@ namespace CoverFrog
         [Header("[ PopupOption - Group ]")] 
         [SerializeField] private GameAutoQuit gameAutoQuit;
         [SerializeField] private List<OptionGroup> optionGroups;
-        
+
+        [SerializeField] GameManager Gm;
+        [SerializeField] Button back_btn;
+        [SerializeField] RectTransform Back_rect;
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            if (Gm.IsPlaying)
+            {
+                back_btn.gameObject.SetActive(true);
+                back_btn.onClick.RemoveAllListeners();
+                back_btn.onClick.AddListener(() => { AirpassUnity.VRSports.VRSportsButton.interacting = null; Time.timeScale = 0; transform.gameObject.SetActive(false); Back_rect.gameObject.SetActive(true); });
+            }
+            else
+                back_btn.gameObject.SetActive(false);
+        }
+
+
+        public override void OnDisable()
+        {
+            PopupManager.Instance.PopupOpenCountDown(this);
+        }
+
+
+
+
         private void Awake()
         {
             optionGroups.ForEach(og => og.Init(onData, offData, gameAutoQuit));

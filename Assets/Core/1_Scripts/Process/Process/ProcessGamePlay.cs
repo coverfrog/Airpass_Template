@@ -48,6 +48,11 @@ namespace CoverFrog
             base.Pause();
             
             _isTimerReduce = false;
+
+            if (gameManager.IsPlaying)
+                Time.timeScale = 0;
+
+
         }
 
         public override void UnPause()
@@ -55,6 +60,10 @@ namespace CoverFrog
             base.UnPause();
             
             _isTimerReduce = true;
+
+            if (gameManager.IsPlaying)
+                Time.timeScale = 1;
+
         }
 
         public override void Completed()

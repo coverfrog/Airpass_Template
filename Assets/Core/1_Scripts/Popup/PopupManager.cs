@@ -106,7 +106,11 @@ namespace CoverFrog
 
         private void PlayHome(PopupHome home)
         {
-            if(home.ActiveInHierarchy)
+            //
+            transform.GetChild(2).gameObject.SetActive(false);
+            //
+
+            if (home.ActiveInHierarchy)
                 home.SetActive(false);
             else
                 home.Play();
@@ -116,7 +120,11 @@ namespace CoverFrog
 
         private void PlayOption(PopupOption option)
         {
-            if(option.ActiveInHierarchy)
+            //
+            transform.GetChild(2).gameObject.SetActive(false);
+            //
+
+            if (option.ActiveInHierarchy)
                 option.SetActive(false);
             else
                 option.Play();

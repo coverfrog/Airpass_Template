@@ -434,7 +434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &617828832
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1261,7 +1261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1161415726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1422,7 +1422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1362978516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   activeOffWhenStop: 0
   activeOffWhenComplete: 0
   currentState: 0
-  TitleType: 1
+  TitleType: 0
 --- !u!224 &1362978517
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2087,33 +2087,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Narration
       objectReference: {fileID: 0}
-    - target: {fileID: 136080825484650765, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701226959446755173, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1788
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701226959446755173, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -155
-      objectReference: {fileID: 0}
-    - target: {fileID: 2763150798901006961, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1788
-      objectReference: {fileID: 0}
-    - target: {fileID: 2763150798901006961, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4164894310642568251, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6460524764068098896, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
-      propertyPath: m_Color.a
-      value: 1
+    - target: {fileID: 5208667035163351290, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 320
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5661edf721e45ca4388bd59700292fd4, type: 3}
@@ -2350,6 +2326,10 @@ PrefabInstance:
     - target: {fileID: 641054887680012183, guid: e92ab52595d6b4540a9a298ef729ba1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502227291309141167, guid: e92ab52595d6b4540a9a298ef729ba1b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 2145298232541148396, guid: e92ab52595d6b4540a9a298ef729ba1b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4081,6 +4061,7 @@ GameObject:
   - component: {fileID: 7914928761203510732}
   - component: {fileID: 4703190140045131609}
   - component: {fileID: 4336934374135691914}
+  - component: {fileID: 7914928761203510733}
   m_Layer: 5
   m_Name: Title2_bg_cloud1
   m_TagString: Untagged
@@ -4183,6 +4164,7 @@ GameObject:
   - component: {fileID: 5689005477763704433}
   - component: {fileID: 1537387693566937015}
   - component: {fileID: 764457018240643308}
+  - component: {fileID: 6097877330016692473}
   m_Layer: 5
   m_Name: Title2_bg_bird
   m_TagString: Untagged
@@ -4190,6 +4172,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6097877330016692473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097877330016692472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5280259458b6b469182579d02025b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playWhenEnable: 1
+  activeOffWhenStop: 0
+  activeOffWhenComplete: 0
+  delay: 0
+  duration: 4
+  startPoint: {x: 327, y: -233}
+  addPoint: {x: -200, y: 0}
 --- !u!1 &6145237452811402213
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,6 +4274,7 @@ GameObject:
   - component: {fileID: 669470264090319642}
   - component: {fileID: 6468876598123763629}
   - component: {fileID: 3967331258269337353}
+  - component: {fileID: 6589851602353577254}
   m_Layer: 5
   m_Name: Title2_bg_cloud2-1
   m_TagString: Untagged
@@ -4280,6 +4282,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6589851602353577254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6589851602353577253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5280259458b6b469182579d02025b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playWhenEnable: 1
+  activeOffWhenStop: 0
+  activeOffWhenComplete: 0
+  delay: 0
+  duration: 4
+  startPoint: {x: -450, y: -280}
+  addPoint: {x: 380, y: 170}
 --- !u!1 &6645870181719510279
 GameObject:
   m_ObjectHideFlags: 0
@@ -4827,6 +4848,25 @@ RectTransform:
   m_AnchoredPosition: {x: 1240, y: -138}
   m_SizeDelta: {x: 187, y: 91}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &7914928761203510733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5580946749228218190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5280259458b6b469182579d02025b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playWhenEnable: 1
+  activeOffWhenStop: 0
+  activeOffWhenComplete: 0
+  delay: 0
+  duration: 4
+  startPoint: {x: 1540, y: -138}
+  addPoint: {x: -200, y: 0}
 --- !u!1 &7924139786428683969
 GameObject:
   m_ObjectHideFlags: 0
